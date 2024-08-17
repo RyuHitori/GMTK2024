@@ -12,17 +12,20 @@ public class CameraController : MonoBehaviour
 
     private float currentZoom = 10.0f;
     private float yaw = 0.0f; 
-    private float pitch = 0.0f; 
+    private float pitch = 0.0f;
+
+
 
     void Update()
     {
         
+
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         currentZoom -= scrollInput * zoomSpeed;
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
         
-        if (Input.GetMouseButton(0)) 
+        if (Input.GetMouseButton(1)) 
         {
             yaw += Input.GetAxis("Mouse X") * rotationSpeed;
             pitch -= Input.GetAxis("Mouse Y") * rotationSpeed;
