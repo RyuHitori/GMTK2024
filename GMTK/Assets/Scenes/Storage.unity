@@ -225,7 +225,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500, y: 1, z: 500}
+  m_LocalScale: {x: 600, y: 1, z: 600}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -324,7 +324,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 179340026309834142, guid: 9d1852ab90e684c4cbfeabe4ea929519, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -235, y: 5, z: -235}
+    position: {x: -285, y: 5, z: -285}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -332,7 +332,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 4042348794925195297, guid: 85350b6dc440d69498e7672e570966f1, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -225, y: 10, z: -225}
+    position: {x: -275, y: 10, z: -275}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 9142914892164421986, guid: 290bd3440d22ac440ae3af00a064cb9e, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -210, y: 25, z: -210}
+    position: {x: -260, y: 25, z: -260}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 5763303017564569028, guid: 94ab6adb167ba8148b321660b3e75a38, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -180, y: 50, z: -180}
+    position: {x: -230, y: 50, z: -230}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 2597712528220134081, guid: ccef512908199b549ab319ff09f1b9f6, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -140, y: 75, z: -140}
+    position: {x: -180, y: 75, z: -180}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 5827715264887630874, guid: ab0ec15caf9fb264d99959b6b37ff80b, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -85, y: 100, z: -85}
+    position: {x: -100, y: 100, z: -100}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -372,7 +372,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 7706683671855576047, guid: a85fe96a3e637fd4da33e0fc8e7d3c05, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: -20, y: 125, z: -20}
+    position: {x: -10, y: 125, z: -10}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 6489281034619655294, guid: be880a316355cd24ba8a08f750987166, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: 60, y: 150, z: 60}
+    position: {x: 100, y: 150, z: 100}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
     texture: {fileID: 0}
   - prefab: {fileID: 8471377116726329414, guid: 2158e748819f90041a05495e334207cb, type: 3}
     meshRenderer: {fileID: 0}
-    position: {x: 150, y: 175, z: 150}
+    position: {x: 200, y: 175, z: 200}
     scale: {x: 1, y: 1, z: 1}
     CusPos: 1
     CusScale: 0
@@ -674,7 +674,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1322695891}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1322695891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -821,7 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube: {fileID: 332484087}
   cornerOffset: {x: -100, y: 300, z: -100}
-  rotation: {x: 40, y: 45, z: 0}
+  rotation: {x: 35, y: 45, z: 0}
 --- !u!1 &1451055906
 GameObject:
   m_ObjectHideFlags: 0
