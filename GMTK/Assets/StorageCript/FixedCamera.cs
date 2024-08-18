@@ -16,7 +16,7 @@ public class FixedCamera : MonoBehaviour
             
             Vector3 cubeCorner = GetCubeCorner(cube);
             transform.position = cubeCorner + cornerOffset;
-            transform.LookAt(cube.position);
+            //transform.LookAt(cube.position);
         }
     }
 

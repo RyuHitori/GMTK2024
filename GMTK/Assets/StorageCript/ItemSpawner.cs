@@ -1,74 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ItemSpawner : MonoBehaviour
 {
-    public GameObject[] itemPrefabs; // Array of item prefabs to be spawned
-    public Transform box; // The box on which items will be spawned
-    public Vector3 cornerOffset = new Vector3(0.5f, 0.5f, 0.5f); // Offset to ensure items are placed inside the box
-    public float spacing = 0.5f; // Space between items along the X-axis
+    [System.Serializable]
+    public class ItemData
+    {
+        public GameObject prefab;
+        public MeshRenderer meshRenderer;
+        public Material material;
+        public Texture texture;
+        public float size;
+    }
 
-    private int currentItemIndex = 0; // Tracks the index of the next item to be spawned
+    public ItemData[] items; 
+    public Transform box;
+    public Vector3 cornerOffset = new Vector3(0.5f, 0.5f, 0.5f);
+    public float spacing = 0.5f;
+
+    private int currentItemIndex = 0;
     private Vector3 currentSpawnPosition;
 
     void Start()
     {
-        // Start from the corner of the box
-        currentSpawnPosition = GetBoxCorner(box) + cornerOffset;
-
-        // Sort items based on their size (volume)
-        System.Array.Sort(itemPrefabs, (a, b) =>
+        // Calculate the size of each item based on its volume
+        foreach (var item in items)
         {
-            float volumeA = GetItemVolume(a);
-            float volumeB = GetItemVolume(b);
-            return volumeA.CompareTo(volumeB);
-        });
+            item.size = CalculateItemSize(item.prefab);
+        }
+
+        // Sort items based on size (smallest first)
+        System.Array.Sort(items, (a, b) => a.size.CompareTo(b.size));
+
+        // Start spawning from the top corner of the box
+        currentSpawnPosition = GetBoxTopCorner(box) + cornerOffset;
     }
 
     void Update()
     {
-        // Check if the "E" key is pressed
-        if (Input.GetKeyDown(KeyCode.E) && currentItemIndex < itemPrefabs.Length)
+        if (Input.GetKeyDown(KeyCode.E) && currentItemIndex < items.Length)
         {
-            SpawnItem();
+            SpawnItem(items[currentItemIndex]);
+            currentItemIndex++;
         }
     }
 
-    void SpawnItem()
+    void SpawnItem(ItemData itemData)
     {
-        // Instantiate the item at the current spawn position
-        GameObject item = Instantiate(itemPrefabs[currentItemIndex], currentSpawnPosition, Quaternion.identity);
+        GameObject item = Instantiate(itemData.prefab, currentSpawnPosition, Quaternion.identity);
 
-        // Update the spawn position for the next item
+        MeshRenderer renderer = item.GetComponent<MeshRenderer>();
+        if (renderer != null)
+        {
+            renderer.material = itemData.material;
+            renderer.material.mainTexture = itemData.texture;
+        }
+
         currentSpawnPosition += new Vector3(spacing, 0, spacing);
-
-        // Move to the next item in the array
-        currentItemIndex++;
     }
 
-    Vector3 GetBoxCorner(Transform boxTransform)
+    Vector3 GetBoxTopCorner(Transform boxTransform)
     {
-        // Calculate the corner position of the box
         Renderer renderer = boxTransform.GetComponent<Renderer>();
         if (renderer != null)
         {
             Bounds bounds = renderer.bounds;
-            Vector3 corner = bounds.center - bounds.extents;
-            return corner;
+            Vector3 topCorner = new Vector3(bounds.min.x, bounds.max.y, bounds.min.z);
+            return topCorner;
         }
         else
         {
-            // Fallback to using scale if no Renderer is found
             Vector3 scale = boxTransform.localScale;
-            Vector3 corner = boxTransform.position - (scale / 2f);
-            return corner;
+            Vector3 topCorner = new Vector3(boxTransform.position.x - (scale.x / 2f),
+                                            boxTransform.position.y + (scale.y / 2f),
+                                            boxTransform.position.z - (scale.z / 2f));
+            return topCorner;
         }
     }
 
-    float GetItemVolume(GameObject item)
+    float CalculateItemSize(GameObject item)
     {
-        // Calculate the volume based on the item's bounds or scale
+        
         Collider collider = item.GetComponent<Collider>();
         if (collider != null)
         {
@@ -77,7 +91,6 @@ public class ItemSpawner : MonoBehaviour
         }
         else
         {
-            // Fallback to scale if no collider is found
             Vector3 scale = item.transform.localScale;
             return scale.x * scale.y * scale.z;
         }
