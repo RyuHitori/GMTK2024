@@ -316,21 +316,86 @@ MonoBehaviour:
   items:
   - prefab: {fileID: 7133300226510611078, guid: 3248c14a5580e7843ba3495f1246ccc6, type: 3}
     meshRenderer: {fileID: 0}
+    position: {x: 200, y: 200, z: 200}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 0
+    CusScale: 0
     material: {fileID: 0}
     texture: {fileID: 0}
-    size: 0
+  - prefab: {fileID: 179340026309834142, guid: 9d1852ab90e684c4cbfeabe4ea929519, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: -235, y: 5, z: -235}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
   - prefab: {fileID: 4042348794925195297, guid: 85350b6dc440d69498e7672e570966f1, type: 3}
     meshRenderer: {fileID: 0}
+    position: {x: -225, y: 10, z: -225}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
     material: {fileID: 0}
     texture: {fileID: 0}
-    size: 0
+  - prefab: {fileID: 9142914892164421986, guid: 290bd3440d22ac440ae3af00a064cb9e, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: -210, y: 25, z: -210}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
   - prefab: {fileID: 5763303017564569028, guid: 94ab6adb167ba8148b321660b3e75a38, type: 3}
     meshRenderer: {fileID: 0}
+    position: {x: -180, y: 50, z: -180}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
     material: {fileID: 0}
     texture: {fileID: 0}
-    size: 0
+  - prefab: {fileID: 2597712528220134081, guid: ccef512908199b549ab319ff09f1b9f6, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: -140, y: 75, z: -140}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
+  - prefab: {fileID: 5827715264887630874, guid: ab0ec15caf9fb264d99959b6b37ff80b, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: -85, y: 100, z: -85}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
+  - prefab: {fileID: 7706683671855576047, guid: a85fe96a3e637fd4da33e0fc8e7d3c05, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: -20, y: 125, z: -20}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
+  - prefab: {fileID: 6489281034619655294, guid: be880a316355cd24ba8a08f750987166, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: 60, y: 150, z: 60}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
+  - prefab: {fileID: 8471377116726329414, guid: 2158e748819f90041a05495e334207cb, type: 3}
+    meshRenderer: {fileID: 0}
+    position: {x: 150, y: 175, z: 150}
+    scale: {x: 1, y: 1, z: 1}
+    CusPos: 1
+    CusScale: 0
+    material: {fileID: 0}
+    texture: {fileID: 0}
   box: {fileID: 332484087}
-  cornerOffset: {x: 50, y: 50, z: 50}
+  cornerOffset: {x: 10, y: 10, z: 10}
 --- !u!1 &929901094
 GameObject:
   m_ObjectHideFlags: 0

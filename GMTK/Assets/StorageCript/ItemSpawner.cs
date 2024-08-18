@@ -11,26 +11,23 @@ public class ItemSpawner : MonoBehaviour
     {
         public GameObject prefab;
         public MeshRenderer meshRenderer;
+        public Vector3 position;
+        public Vector3 scale = Vector3.one;
+        public bool CusPos = false;
+        public bool CusScale = false;
         public Material material;
         public Texture texture;
-        public float size;
     }
 
-    public ItemData[] items; 
+    public ItemData[] items;
     public Transform box;
     public Vector3 cornerOffset = new Vector3(0f, 0f, 0f);
-    //public float spacing = 0f;
 
     private int currentItemIndex = 0;
     private Vector3 currentSpawnPosition;
 
     void Start()
     {
-        foreach (var item in items)
-        {
-            item.size = CalculateItemSize(item.prefab);
-        }
-        System.Array.Sort(items, (a, b) => a.size.CompareTo(b.size));
         currentSpawnPosition = GetBoxTopCorner(box) + cornerOffset;
     }
 
@@ -45,26 +42,35 @@ public class ItemSpawner : MonoBehaviour
 
     void SpawnItem(ItemData itemData)
     {
-        GameObject item = Instantiate(itemData.prefab, currentSpawnPosition, Quaternion.identity);
+        Vector3 spawnPosition;
+
+        if (itemData.CusPos)
+        {
+            spawnPosition = itemData.position;
+        }
+        else
+        {
+            spawnPosition = currentSpawnPosition;
+        }
+
+        GameObject item = Instantiate(itemData.prefab, spawnPosition, Quaternion.identity);
+        if (itemData.CusScale)
+        {
+            item.transform.localScale = itemData.scale;
+        }
         Collider collider = item.GetComponent<Collider>();
-        Debug.Log(currentItemIndex);
-        Bounds bounds = collider.bounds;
-        Debug.Log(bounds.size.x);
-        Debug.Log(bounds.size.z);
-        float X = bounds.size.x * 2;
-        float Z = bounds.size.z * 2;
-        Debug.Log(X);
-        Debug.Log(Z);
+
         MeshRenderer renderer = item.GetComponent<MeshRenderer>();
         if (renderer != null)
         {
             renderer.material = itemData.material;
             renderer.material.mainTexture = itemData.texture;
         }
-
-        //currentSpawnPosition += new Vector3(spacing, 0, spacing);
-        if (currentItemIndex + 1 < items.Length)
+        if (!itemData.CusPos && currentItemIndex + 1 < items.Length)
         {
+            Bounds bounds = collider.bounds;
+            float X = bounds.size.x;
+            float Z = bounds.size.z;
             currentSpawnPosition += new Vector3(X, 0, Z);
         }
     }
@@ -85,22 +91,6 @@ public class ItemSpawner : MonoBehaviour
                                             boxTransform.position.y + (scale.y / 2f),
                                             boxTransform.position.z - (scale.z / 2f));
             return topCorner;
-        }
-    }
-
-    float CalculateItemSize(GameObject item)
-    {
-        
-        Collider collider = item.GetComponent<Collider>();
-        if (collider != null)
-        {
-            Bounds bounds = collider.bounds;
-            return bounds.size.x * bounds.size.y * bounds.size.z;
-        }
-        else
-        {
-            Vector3 scale = item.transform.localScale;
-            return scale.x * scale.y * scale.z;
         }
     }
 }
