@@ -17,7 +17,6 @@ public class Test : MonoBehaviour
 
     float GetItemVolume(GameObject item)
     {
-        // Calculate the volume based on the item's bounds or scale
         Collider collider = item.GetComponent<Collider>();
         if (collider != null)
         {
@@ -26,7 +25,6 @@ public class Test : MonoBehaviour
         }
         else
         {
-            // Fallback to scale if no collider is found
             Vector3 scale = item.transform.localScale;
             return scale.x * scale.y * scale.z;
         }

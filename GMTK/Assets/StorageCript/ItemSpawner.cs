@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemSpawner : MonoBehaviour
 {
@@ -17,24 +18,19 @@ public class ItemSpawner : MonoBehaviour
 
     public ItemData[] items; 
     public Transform box;
-    public Vector3 cornerOffset = new Vector3(0.5f, 0.5f, 0.5f);
-    public float spacing = 0.5f;
+    public Vector3 cornerOffset = new Vector3(0f, 0f, 0f);
+    //public float spacing = 0f;
 
     private int currentItemIndex = 0;
     private Vector3 currentSpawnPosition;
 
     void Start()
     {
-        // Calculate the size of each item based on its volume
         foreach (var item in items)
         {
             item.size = CalculateItemSize(item.prefab);
         }
-
-        // Sort items based on size (smallest first)
         System.Array.Sort(items, (a, b) => a.size.CompareTo(b.size));
-
-        // Start spawning from the top corner of the box
         currentSpawnPosition = GetBoxTopCorner(box) + cornerOffset;
     }
 
@@ -50,7 +46,15 @@ public class ItemSpawner : MonoBehaviour
     void SpawnItem(ItemData itemData)
     {
         GameObject item = Instantiate(itemData.prefab, currentSpawnPosition, Quaternion.identity);
-
+        Collider collider = item.GetComponent<Collider>();
+        Debug.Log(currentItemIndex);
+        Bounds bounds = collider.bounds;
+        Debug.Log(bounds.size.x);
+        Debug.Log(bounds.size.z);
+        float X = bounds.size.x * 2;
+        float Z = bounds.size.z * 2;
+        Debug.Log(X);
+        Debug.Log(Z);
         MeshRenderer renderer = item.GetComponent<MeshRenderer>();
         if (renderer != null)
         {
@@ -58,7 +62,11 @@ public class ItemSpawner : MonoBehaviour
             renderer.material.mainTexture = itemData.texture;
         }
 
-        currentSpawnPosition += new Vector3(spacing, 0, spacing);
+        //currentSpawnPosition += new Vector3(spacing, 0, spacing);
+        if (currentItemIndex + 1 < items.Length)
+        {
+            currentSpawnPosition += new Vector3(X, 0, Z);
+        }
     }
 
     Vector3 GetBoxTopCorner(Transform boxTransform)
