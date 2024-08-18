@@ -737,6 +737,7 @@ GameObject:
   - component: {fileID: 1396257502}
   - component: {fileID: 1396257501}
   - component: {fileID: 1396257504}
+  - component: {fileID: 1396257505}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -834,6 +835,23 @@ MonoBehaviour:
   cube: {fileID: 332484087}
   cornerOffset: {x: -100, y: 300, z: -100}
   rotation: {x: 35, y: 45, z: 0}
+--- !u!114 &1396257505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396257500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c35d1d97c7cc250419bd0613b30f769f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 100
+  camera: {fileID: 1396257502}
+  zoomSpeed: 50
+  minFieldOfView: 15
+  maxFieldOfView: 60
 --- !u!1 &1451055906
 GameObject:
   m_ObjectHideFlags: 0
