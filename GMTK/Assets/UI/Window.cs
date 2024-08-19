@@ -11,6 +11,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
     public int id;
     public Vector2 maxSize, minSize;
     public Vector2 preferedPos, preferedSize;
+    public bool focusing;
 
     RectTransform rectTransform;
 
@@ -42,6 +43,9 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
+
+        focusing = transform.GetSiblingIndex() == transform.parent.childCount - 1;
+
         rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, Vector3.one * targetScale, 30 * Time.deltaTime);
         Vector2 cursorDelta = cursor.position - cursorAnchor;
 

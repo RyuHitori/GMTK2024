@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cursor
   - GameManager
+  - Insta3D
   layers:
   - Default
   - TransparentFX
