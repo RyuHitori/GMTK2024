@@ -721,10 +721,10 @@ MonoBehaviour:
   moveSpeed: 15
   minVerticalRotation: -30
   maxVerticalRotation: 30
-  minHorizontalRotation: -60
+  minHorizontalRotation: 0
   maxHorizontalRotation: 60
-  minYPosition: 1
-  maxYPosition: 10
+  minYPosition: 5
+  maxYPosition: 50
 --- !u!1 &1753145634
 GameObject:
   m_ObjectHideFlags: 0
