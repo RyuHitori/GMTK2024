@@ -47,10 +47,6 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
         if(Input.GetMouseButtonUp(0))
         {
-            if(rectTransform.rect.Overlaps(cursor.transform.GetComponent<RectTransform>().rect))
-            {
-                cursor.cursorType = CursorType.Default;
-            }
 
             moving = vRezing = hRezing = cRezing = false;
             

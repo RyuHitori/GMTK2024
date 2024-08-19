@@ -9,7 +9,7 @@ public enum ResizeType
     Horizontal,
     Vertical,
 }
-public class Resizer : MonoBehaviour, IBeginDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class Resizer : MonoBehaviour, IBeginDragHandler, IDragHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerClickHandler
 {
     public Window target;
     public ResizeType resizeType;
@@ -69,6 +69,16 @@ public class Resizer : MonoBehaviour, IBeginDragHandler, IDragHandler, IPointerE
         {
             cursor.cursorType = CursorType.Default;
         }
+        
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        cursor.cursorType = CursorType.Default;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
         
     }
 }

@@ -8,6 +8,16 @@ public class InventorySystem : MonoBehaviour
     public List<TradeObject> inventory;
 
     [Header("Wallet")]
-    public long money;
+    public long big;
+    public int small;
+
+    private void Update()
+    {
+        if(small > 100)
+        {
+            big++;
+            small -= 100;
+        }
+    }
 
 }
