@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     public float minZoom = 5.0f; 
     public float maxZoom = 20.0f; 
 
-    private float currentZoom = 10.0f;
+    public float currentZoom = 10.0f;
     private float yaw = 0.0f; 
     private float pitch = 0.0f;
 
