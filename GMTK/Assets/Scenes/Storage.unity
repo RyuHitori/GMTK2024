@@ -718,7 +718,13 @@ MonoBehaviour:
   zoomSpeed: 50
   minFieldOfView: 15
   maxFieldOfView: 60
-  moveSpeed: 5
+  moveSpeed: 15
+  minVerticalRotation: -30
+  maxVerticalRotation: 30
+  minHorizontalRotation: -60
+  maxHorizontalRotation: 60
+  minYPosition: 1
+  maxYPosition: 10
 --- !u!1 &1753145634
 GameObject:
   m_ObjectHideFlags: 0

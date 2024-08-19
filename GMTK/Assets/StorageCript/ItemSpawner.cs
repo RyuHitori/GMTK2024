@@ -23,24 +23,37 @@ public class ItemSpawner : MonoBehaviour
     public Transform box;
     public Vector3 cornerOffset = new Vector3(0f, 0f, 0f);
 
-    private int currentItemIndex = 0;
     private Vector3 currentSpawnPosition;
+    private GameObject[] spawnedItems;
 
     void Start()
     {
         currentSpawnPosition = GetBoxTopCorner(box) + cornerOffset;
+        spawnedItems = new GameObject[items.Length];
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && currentItemIndex < items.Length)
+        for (int i = 0; i < items.Length; i++)
         {
-            SpawnItem(items[currentItemIndex]);
-            currentItemIndex++;
+            KeyCode alphaKey = KeyCode.Alpha1 + i;
+            KeyCode keypadKey = KeyCode.Keypad1 + i;
+
+            if (Input.GetKeyDown(alphaKey) || Input.GetKeyDown(keypadKey))
+            {
+                if (spawnedItems[i] == null)
+                {
+                    SpawnItem(items[i], i);
+                }
+                else
+                {
+                    DeleteItem(i);
+                }
+            }
         }
     }
 
-    void SpawnItem(ItemData itemData)
+    void SpawnItem(ItemData itemData, int index)
     {
         Vector3 spawnPosition;
 
@@ -58,6 +71,7 @@ public class ItemSpawner : MonoBehaviour
         {
             item.transform.localScale = itemData.scale;
         }
+
         Collider collider = item.GetComponent<Collider>();
 
         MeshRenderer renderer = item.GetComponent<MeshRenderer>();
@@ -66,12 +80,24 @@ public class ItemSpawner : MonoBehaviour
             renderer.material = itemData.material;
             renderer.material.mainTexture = itemData.texture;
         }
-        if (!itemData.CusPos && currentItemIndex + 1 < items.Length)
+
+        if (!itemData.CusPos && index + 1 < items.Length)
         {
             Bounds bounds = collider.bounds;
             float X = bounds.size.x;
             float Z = bounds.size.z;
             currentSpawnPosition += new Vector3(X, 0, Z);
+        }
+
+        spawnedItems[index] = item;
+    }
+
+    void DeleteItem(int index)
+    {
+        if (spawnedItems[index] != null)
+        {
+            Destroy(spawnedItems[index]);
+            spawnedItems[index] = null;
         }
     }
 

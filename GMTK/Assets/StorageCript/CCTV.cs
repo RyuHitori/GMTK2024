@@ -11,10 +11,18 @@ public class CCTV : MonoBehaviour
     public float maxFieldOfView = 90f;
     public float moveSpeed = 5f;
 
-    void Start()
-    {
+    // Rotation limits
+    public float minVerticalRotation = -30f;
+    public float maxVerticalRotation = 30f;
+    public float minHorizontalRotation = -60f;
+    public float maxHorizontalRotation = 60f;
 
-    }
+    // Position limits
+    public float minYPosition = 1f;
+    public float maxYPosition = 10f;
+
+    private float currentVerticalRotation = 0f;
+    private float currentHorizontalRotation = 0f;
 
     void Update()
     {
@@ -25,11 +33,39 @@ public class CCTV : MonoBehaviour
 
     private void HandleRotation()
     {
-        float horizontalRotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
-        float verticalRotation = Input.GetAxis("Vertical") * rotationSpeed * Time.deltaTime;
+        float horizontalRotation = 0f;
+        float verticalRotation = 0f;
 
-        transform.Rotate(Vector3.up, horizontalRotation, Space.World);
-        transform.Rotate(Vector3.right, -verticalRotation, Space.Self);
+        // Handle horizontal rotation with 'A' and 'D' keys
+        if (Input.GetKey(KeyCode.A))
+        {
+            horizontalRotation = -rotationSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            horizontalRotation = rotationSpeed * Time.deltaTime;
+        }
+
+        // Handle vertical rotation with 'W' and 'S' keys
+        if (Input.GetKey(KeyCode.W))
+        {
+            verticalRotation = -rotationSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            verticalRotation = rotationSpeed * Time.deltaTime;
+        }
+
+        // Update current rotations
+        currentHorizontalRotation += horizontalRotation;
+        currentVerticalRotation += verticalRotation;
+
+        // Clamp the rotations within limits
+        currentHorizontalRotation = Mathf.Clamp(currentHorizontalRotation, minHorizontalRotation, maxHorizontalRotation);
+        currentVerticalRotation = Mathf.Clamp(currentVerticalRotation, minVerticalRotation, maxVerticalRotation);
+
+        // Apply the rotations
+        transform.rotation = Quaternion.Euler(currentVerticalRotation, currentHorizontalRotation, 0f);
     }
 
     private void HandleZoom()
@@ -46,16 +82,17 @@ public class CCTV : MonoBehaviour
             camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minFieldOfView, maxFieldOfView);
         }
 
+        // Zoom using the mouse scroll wheel
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        camera.fieldOfView -= scroll * zoomSpeed * 1/2;
+        camera.fieldOfView -= scroll * zoomSpeed * 0.5f;
         camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minFieldOfView, maxFieldOfView);
-        
     }
 
     private void HandlePositionChange()
     {
         float verticalMovement = 0f;
 
+        // Adjust camera position on the y-axis using the up and down arrow keys
         if (Input.GetKey(KeyCode.UpArrow))
         {
             verticalMovement = moveSpeed * Time.deltaTime;
@@ -65,6 +102,9 @@ public class CCTV : MonoBehaviour
             verticalMovement = -moveSpeed * Time.deltaTime;
         }
 
-        camera.transform.position += new Vector3(0, verticalMovement, 0);
+        // Update and clamp the camera's y position
+        Vector3 newPosition = camera.transform.position + new Vector3(0, verticalMovement, 0);
+        newPosition.y = Mathf.Clamp(newPosition.y, minYPosition, maxYPosition);
+        camera.transform.position = newPosition;
     }
 }
