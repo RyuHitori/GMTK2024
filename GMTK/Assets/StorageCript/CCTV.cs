@@ -9,7 +9,6 @@ public class CCTV : MonoBehaviour
     public float zoomSpeed = 10f;
     public float minFieldOfView = 15f;
     public float maxFieldOfView = 90f;
-    private bool isZoomingIn = false;
 
     void Start()
     {
