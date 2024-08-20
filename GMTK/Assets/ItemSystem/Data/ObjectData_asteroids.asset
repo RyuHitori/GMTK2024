@@ -16,7 +16,9 @@ MonoBehaviour:
   description: boom
   value: 100000000
   scale: 100000000
-  icon: {fileID: 21300000, guid: 856f81372aa38de4fb0585c3fd15659a, type: 3}
+  icon: {fileID: 21300000, guid: ff53008a5f6f9be41ba18cd0a9d892e4, type: 3}
   mesh: {fileID: -7625991451828968816, guid: b73deeb059dc39343a87c2f14e22e05a, type: 3}
-  insta3DScale: {x: 1, y: 1, z: 1}
-  insta3DOffset: {x: 0, y: 0, z: 0}
+  insta3DScale: {x: 0.001, y: 0.001, z: 0.001}
+  insta3DOffset: {x: -0.5, y: 0, z: 0}
+  storageScale: {x: 1, y: 1, z: 1}
+  storageOffset: {x: 0, y: 0, z: 0}

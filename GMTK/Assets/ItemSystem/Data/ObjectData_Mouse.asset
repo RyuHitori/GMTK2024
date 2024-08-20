@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53255d3d1777a454e964f375ef9a164c, type: 3}
   m_Name: ObjectData_Mouse
   m_EditorClassIdentifier: 
-  title: Golden Coin
-  description: A shiny golden coin
-  value: 1
+  title: Mouse
+  description: Jerry
+  value: 10
   scale: 1
-  icon: {fileID: 21300000, guid: bd2c3f779c371744aaff2c247eec020d, type: 3}
-  mesh: {fileID: -2432090755550338912, guid: 104ccbcdbeab4c34081c985fc46fa935, type: 3}
-  insta3DScale: {x: 1, y: 1, z: 1}
+  icon: {fileID: 21300000, guid: 0a90ddcef38634948a29cdcaaeebfb27, type: 3}
+  mesh: {fileID: -2432090755550338912, guid: 9e414363921edd54db620e1fa14a9f6f, type: 3}
+  insta3DScale: {x: 0.5, y: 0.5, z: 0.5}
   insta3DOffset: {x: 0, y: 0, z: 0}
+  storageScale: {x: 1, y: 1, z: 1}
+  storageOffset: {x: 0, y: 0, z: 0}
