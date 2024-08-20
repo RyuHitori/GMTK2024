@@ -18,6 +18,9 @@ public class ModelRotator : MonoBehaviour
 
     void Update()
     {
+        target.localScale = data.insta3DScale;
+        target.position = transform.position + data.insta3DOffset;
+
         if(currentData != data)
         {
             currentData = data;
