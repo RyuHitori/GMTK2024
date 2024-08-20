@@ -384,9 +384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c9f6a707ec7f6546b1ac32b782fc506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  box: {fileID: 332484087}
-  cornerOffset: {x: 0, y: 0, z: 0}
+  storageItemPF: {fileID: 5245666528341395997, guid: 8f106b25e6ce3cc45a009654ba324d9c, type: 3}
+  inventory: {fileID: 0}
 --- !u!1 &471560493
 GameObject:
   m_ObjectHideFlags: 0

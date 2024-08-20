@@ -20,3 +20,7 @@ MonoBehaviour:
   mesh: {fileID: -2432090755550338912, guid: 104ccbcdbeab4c34081c985fc46fa935, type: 3}
   insta3DScale: {x: 1, y: 1, z: 1}
   insta3DOffset: {x: 0, y: 0, z: 0}
+
+  storageScale: {x: 1, y: 1, z: 1}
+  storageOffset: {x: 0, y: 0, z: 0}
+
