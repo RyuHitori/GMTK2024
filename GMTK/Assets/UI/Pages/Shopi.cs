@@ -70,6 +70,7 @@ public class Shopi : MonoBehaviour
         {
             if (inventory.money >= currentDisplaying.value)
             {
+                
                 inventory.AddItem(currentObject);
                 inventory.AdjustMoney(-currentObject.value);
                 objectSystem.RemoveItem(currentObject);

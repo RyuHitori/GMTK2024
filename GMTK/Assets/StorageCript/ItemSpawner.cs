@@ -39,23 +39,26 @@ public class ItemSpawner : MonoBehaviour
                 if(!found)
                 {
                     dataToAdd = item.data;
+
+                    GameObject newObject = Instantiate(storageItemPF, transform);
+                    StorageItem storageItem = newObject.GetComponent<StorageItem>();
+
+                    storageItem.data = dataToAdd;
+
+                    spawnedItem.Add(dataToAdd);
+
                     break;
+
+
                 }
-                
+                else
+                {
+                    count += 1;
+                }
             }
 
-            if (!found)
-            {
 
-                GameObject newObject = Instantiate(storageItemPF, transform);
-                StorageItem storageItem = newObject.GetComponent<StorageItem>();
-
-                storageItem.data = dataToAdd;
-
-                spawnedItem.Add(dataToAdd);
-            }
-
-            count = inventory.inventory.Count;
+            
         }
     }
 

@@ -19,24 +19,32 @@ public class InventorySystem : MonoBehaviour
     {
         foreach (InventoryItem item in inventory)
         {
-            if (item.data == data) item.count++;
-            return;
+            if (item.data == data)
+            {
+                item.count++;
+                return;
+            }
         }
 
-        InventoryItem newItem = new InventoryItem(); 
-        newItem.data = data; 
+        // If the item is not found in the inventory, create a new one
+        InventoryItem newItem = new InventoryItem();
+        newItem.data = data;
         newItem.count = 1;
 
         inventory.Add(newItem);
-
     }
 
     public void RemoveItem(ObjectData data)
     {
         foreach (InventoryItem item in inventory)
         {
-            if (item.data == data) item.count--;
-            return;
+            if (item.data == data)
+            {
+                item.count--;
+                return;
+            }
+                
+            
         }
     }
 
