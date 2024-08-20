@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CCTV : MonoBehaviour
 {
-    public float rotationSpeed = 100f;
-    public Camera camera;
-    public float zoomSpeed = 10f;
+    public float baseRotationSpeed = 100f;
+    public Camera cam;
+    public float baseZoomSpeed = 10f;
     public float minFieldOfView = 15f;
     public float maxFieldOfView = 90f;
     public float moveSpeed = 5f;
@@ -24,6 +24,13 @@ public class CCTV : MonoBehaviour
     private float currentVerticalRotation = 0f;
     private float currentHorizontalRotation = 0f;
 
+    float targetFOV;
+
+    private void Start()
+    {
+        targetFOV = cam.fieldOfView;
+    }
+
     void Update()
     {
         HandleRotation();
@@ -33,6 +40,12 @@ public class CCTV : MonoBehaviour
 
     private void HandleRotation()
     {
+        // Get camera's current FOV
+        float fov = cam.fieldOfView;
+
+        // Adjust rotation speed based on FOV
+        float rotationSpeed = baseRotationSpeed * (fov / 60f); // Assuming 60 is the default FOV for your camera
+
         float horizontalRotation = 0f;
         float verticalRotation = 0f;
 
@@ -64,47 +77,52 @@ public class CCTV : MonoBehaviour
         currentHorizontalRotation = Mathf.Clamp(currentHorizontalRotation, minHorizontalRotation, maxHorizontalRotation);
         currentVerticalRotation = Mathf.Clamp(currentVerticalRotation, minVerticalRotation, maxVerticalRotation);
 
-        // Apply the rotations
-        transform.rotation = Quaternion.Euler(currentVerticalRotation, currentHorizontalRotation, 0f);
+        Quaternion targetRotation = Quaternion.Euler(currentVerticalRotation, currentHorizontalRotation, 0f);
+
+        // Apply the rotations -> Smooth
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
     }
 
     private void HandleZoom()
     {
-        // Zoom using 'I' and 'O' keys
-        if (Input.GetKey(KeyCode.I))
+
+        // Calculate zoom speed based on the current FOV
+        float fov = cam.fieldOfView;
+        float zoomSpeed = baseZoomSpeed * (fov / 60f); // Assuming 60 is the default FOV
+
+        // Zoom using 'Q' and 'E' keys
+        if (Input.GetKey(KeyCode.E))
         {
-            camera.fieldOfView -= zoomSpeed * Time.deltaTime;
-            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minFieldOfView, maxFieldOfView);
+            targetFOV -= zoomSpeed * Time.deltaTime;
+            targetFOV = Mathf.Clamp(targetFOV, minFieldOfView, maxFieldOfView);
         }
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKey(KeyCode.Q))
         {
-            camera.fieldOfView += zoomSpeed * Time.deltaTime;
-            camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minFieldOfView, maxFieldOfView);
+            targetFOV += zoomSpeed * Time.deltaTime;
+            targetFOV = Mathf.Clamp(targetFOV, minFieldOfView, maxFieldOfView);
         }
 
-        // Zoom using the mouse scroll wheel
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        camera.fieldOfView -= scroll * zoomSpeed * 0.5f;
-        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, minFieldOfView, maxFieldOfView);
+        // Smoothly interpolate camera FOV
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, targetFOV, 10 * Time.deltaTime);
     }
 
     private void HandlePositionChange()
     {
         float verticalMovement = 0f;
 
-        // Adjust camera position on the y-axis using the up and down arrow keys
-        if (Input.GetKey(KeyCode.UpArrow))
+        // Adjust camera position on the y-axis using the up and down arrow keys ->  shift + control
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             verticalMovement = moveSpeed * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             verticalMovement = -moveSpeed * Time.deltaTime;
         }
 
         // Update and clamp the camera's y position
-        Vector3 newPosition = camera.transform.position + new Vector3(0, verticalMovement, 0);
+        Vector3 newPosition = cam.transform.position + new Vector3(0, verticalMovement, 0);
         newPosition.y = Mathf.Clamp(newPosition.y, minYPosition, maxYPosition);
-        camera.transform.position = newPosition;
+        cam.transform.position = newPosition;
     }
 }

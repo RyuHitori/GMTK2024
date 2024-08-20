@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectSystem : MonoBehaviour
 {
     [Header("Database")]
-    public List<TradeObject> objects;
+    public List<InventoryItem> inventory;
 
     [Header("Summary")]
     public long value;
@@ -16,42 +16,49 @@ public class ObjectSystem : MonoBehaviour
 
     private void Start()
     {
-        listLastCount = objects.Count;
+        listLastCount = inventory.Count;
 
-        UpdateData();
+        //UpdateData();
     }
     private void Update()
     {
-        UpdateData();
+        //UpdateData();
     }
 
-    static long GetTotalUnit(List<TradeObject> data)
+    public void RemoveItem(ObjectData data)
     {
-        long unit = 0;
-
-        foreach(TradeObject obj in data)
+        foreach (InventoryItem item in inventory)
         {
-            unit += obj.unit;
+            if (item.data == data) item.count--;
+            return;
+        }
+    }
+
+    public void AddItem(ObjectData data)
+    {
+        foreach (InventoryItem item in inventory)
+        {
+            if (item.data == data) item.count++;
+            return;
         }
 
-        return unit;
+        InventoryItem newItem = new InventoryItem();
+        newItem.data = data;
+        newItem.count = 0;
+
+        inventory.Add(newItem);
     }
 
-    static long GetTotalValue(List<TradeObject> data)
+    public int GetItemCount(ObjectData data)
     {
-        long value = 0;
+        int count = 0;
 
-        foreach(TradeObject obj in data)
+        foreach (InventoryItem item in inventory)
         {
-            value += obj.value;
+            if(item.data == data) count = item.count;
         }
 
-        return value;
+        return count;
     }
 
-    public void UpdateData()
-    {
-        value = GetTotalValue(objects);
-        unit = GetTotalUnit(objects);
-    }
 }

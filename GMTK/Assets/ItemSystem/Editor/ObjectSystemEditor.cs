@@ -13,7 +13,7 @@ public class ObjectSystemEditor : Editor
 
         ObjectSystem objSystem = (ObjectSystem)target;
 
-        objSystem.UpdateData();
+        //objSystem.UpdateData();
 
     }
 }

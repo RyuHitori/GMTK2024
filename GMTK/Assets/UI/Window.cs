@@ -40,7 +40,7 @@ public class Window : MonoBehaviour, IPointerDownHandler
     private void Start()
     {
         inactive = Color.white;
-        active = new Color(91, 0, 255);
+        active = new Color(19, 255, 0);
 
         background = transform.Find("Background").GetComponent<Image>();
 
