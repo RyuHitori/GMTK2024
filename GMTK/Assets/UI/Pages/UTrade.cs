@@ -23,6 +23,8 @@ public class UTrade : MonoBehaviour
 
     bool canTrade;
 
+    int invCount;
+
     private void Start()
     {
         GameObject gameManager = GameObject.FindGameObjectWithTag("GameManager");
@@ -45,6 +47,11 @@ public class UTrade : MonoBehaviour
             modelRotator.data = currentDisplaying;
 
             UpdateInfo();
+        }
+
+        if(invCount != inventory.inventory.Count)
+        {
+            Refresh();
         }
     }
 
@@ -137,6 +144,7 @@ public class UTrade : MonoBehaviour
                 if(item.count > 0 )
                 {
                     item.count--;
+                    UpdateInfo();
                     return;
                 }
                 
@@ -204,6 +212,7 @@ public class UTrade : MonoBehaviour
                 if (item.count > 0)
                 {
                     item.count--;
+                    UpdateInfo();
                     return;
                 }
 
