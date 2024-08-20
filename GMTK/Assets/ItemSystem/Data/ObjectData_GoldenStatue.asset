@@ -19,6 +19,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 4830dad95012360478b33eaf2cf94d95, type: 3}
 
   mesh: {fileID: -2432090755550338912, guid: 29aeb925a1893364e9d0c1a41bcd6f6a, type: 3}
+<<<<<<< HEAD
   insta3DScale: {x: 1, y: 1, z: 1}
   insta3DOffset: {x: 0, y: 0, z: 0}
 
@@ -28,3 +29,5 @@ MonoBehaviour:
   storageScale: {x: 1, y: 1, z: 1}
   storageOffset: {x: 0, y: 0, z: 0}
 
+=======
+>>>>>>> parent of f3c5d7f (gg)

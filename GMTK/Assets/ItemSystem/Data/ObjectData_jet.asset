@@ -18,5 +18,5 @@ MonoBehaviour:
   scale: 200
   icon: {fileID: 21300000, guid: 856f81372aa38de4fb0585c3fd15659a, type: 3}
   mesh: {fileID: -2432090755550338912, guid: a7cfb0239e44bbf46baee340f421ef7e, type: 3}
-  insta3DScale: {x: 1, y: 1, z: 1}
+  insta3DScale: {x: 0, y: 0, z: 0}
   insta3DOffset: {x: 0, y: 0, z: 0}
