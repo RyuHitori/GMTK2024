@@ -24,6 +24,8 @@ public class Cursor : MonoBehaviour
 
     public Vector2 bound1, bound2;
 
+    public AudioSource audioSource, audio2;
+
 
     void Start()
     {
@@ -33,6 +35,15 @@ public class Cursor : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        {
+            audioSource.Play();
+        }
+        if(Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        {
+            audio2.Play();
+        }
+
         // Convert mouse position to screen point in UI space
         Vector2 cursorPos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
