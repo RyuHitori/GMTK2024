@@ -1070,8 +1070,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2022 30.24 \u2022"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 4f893059898904147b9bfbb95d237821, type: 2}
+  m_sharedMaterial: {fileID: 7053658321384347136, guid: 4f893059898904147b9bfbb95d237821, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
