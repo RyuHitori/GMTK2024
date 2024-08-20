@@ -15,6 +15,8 @@ public class ItemSpawner : MonoBehaviour
         public Vector3 scale = Vector3.one;
         public bool CusPos = false;
         public bool CusScale = false;
+        public bool CusRot = false;
+        public Vector3 rotation = Vector3.zero;
         public Material material;
         public Texture texture;
     }
@@ -56,6 +58,7 @@ public class ItemSpawner : MonoBehaviour
     void SpawnItem(ItemData itemData, int index)
     {
         Vector3 spawnPosition;
+        Quaternion spawnRotation;
 
         if (itemData.CusPos)
         {
@@ -66,7 +69,17 @@ public class ItemSpawner : MonoBehaviour
             spawnPosition = currentSpawnPosition;
         }
 
-        GameObject item = Instantiate(itemData.prefab, spawnPosition, Quaternion.identity);
+        if (itemData.CusRot)
+        {
+            spawnRotation = Quaternion.Euler(itemData.rotation);
+        }
+        else
+        {
+            spawnRotation = Quaternion.identity;
+        }
+
+        GameObject item = Instantiate(itemData.prefab, spawnPosition, spawnRotation);
+
         if (itemData.CusScale)
         {
             item.transform.localScale = itemData.scale;
