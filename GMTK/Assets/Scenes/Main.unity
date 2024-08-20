@@ -2217,6 +2217,10 @@ MonoBehaviour:
     count: 2
   - data: {fileID: 11400000, guid: f7d666462855611478f0284f835235ff, type: 2}
     count: 1
+  - data: {fileID: 11400000, guid: ad1e2245643d68244ad5e683d9f05a9c, type: 2}
+    count: 1
+  - data: {fileID: 11400000, guid: 75ce51f8b0fccc44f87b0f54aff3b71a, type: 2}
+    count: 1
   value: 0
   unit: 0
 --- !u!4 &1216657331
