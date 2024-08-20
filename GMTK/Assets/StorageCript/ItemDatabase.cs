@@ -4,54 +4,72 @@ using UnityEngine;
 
 public class ItemDatabase : MonoBehaviour
 {
-    public MeshRenderer[] meshRenderers; // Array to hold different mesh renderers
-    private int currentIndex = 0; // To track the current mesh renderer
+    [System.Serializable]
+    public class ObjectData
+    {
+        public GameObject model;        // The 3D model prefab
+        public float value;             // Custom value associated with the object
+        public Vector3 scale = Vector3.one; // Scale of the object
+        public Color colorCode = Color.white; // Color code for the object
+    }
+
+    public ObjectData[] objects; // Array of ObjectData
+
+    private int currentIndex = 0; // Current object index
+    private GameObject currentObject; // The currently displayed object
 
     void Start()
     {
-        // Ensure the first mesh renderer is active and others are inactive
-        UpdateMeshRenderer();
+        if (objects.Length > 0)
+        {
+            ShowObject(0); // Show the first object at the start
+        }
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            ChangeMeshRenderer(-1);
+            ShowPreviousObject();
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
-            ChangeMeshRenderer(1);
+            ShowNextObject();
         }
     }
 
-    private void ChangeMeshRenderer(int direction)
+    void ShowObject(int index)
     {
-        // Update the index based on direction (1 for next, -1 for previous)
-        currentIndex += direction;
-
-        // Wrap the index if it goes out of bounds
-        if (currentIndex < 0)
+        if (currentObject != null)
         {
-            currentIndex = meshRenderers.Length - 1;
-        }
-        else if (currentIndex >= meshRenderers.Length)
-        {
-            currentIndex = 0;
+            Destroy(currentObject); // Destroy the current object before showing the new one
         }
 
-        UpdateMeshRenderer();
+        ObjectData objectData = objects[index];
+        currentObject = Instantiate(objectData.model, transform.position, Quaternion.identity);
+        currentObject.transform.localScale = objectData.scale;
+
+        Renderer renderer = currentObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material.color = objectData.colorCode; // Apply the color code
+        }
+        Rigidbody rb = currentObject.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true; // Set isKinematic to true if Rigidbody is present
+        }
     }
 
-    private void UpdateMeshRenderer()
+    void ShowPreviousObject()
     {
-        // Deactivate all mesh renderers first
-        foreach (var renderer in meshRenderers)
-        {
-            renderer.enabled = false;
-        }
+        currentIndex = (currentIndex - 1 + objects.Length) % objects.Length;
+        ShowObject(currentIndex);
+    }
 
-        // Activate the current mesh renderer
-        meshRenderers[currentIndex].enabled = true;
+    void ShowNextObject()
+    {
+        currentIndex = (currentIndex + 1) % objects.Length;
+        ShowObject(currentIndex);
     }
 }

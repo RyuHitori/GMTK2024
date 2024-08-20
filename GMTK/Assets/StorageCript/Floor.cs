@@ -10,7 +10,7 @@ public class Floor : MonoBehaviour
 
         if (rb != null)
         {
-            rb.isKinematic = true;
+            Destroy(rb); // Remove the Rigidbody component
         }
     }
 }
