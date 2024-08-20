@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - prefab: {fileID: 2133959905}
+  - prefab: {fileID: 2033493392797372398, guid: b2882a3ee58abc1458cae0585f60164c, type: 3}
     meshRenderer: {fileID: 0}
     position: {x: 200, y: 200, z: 200}
     scale: {x: 1, y: 1, z: 1}
@@ -322,9 +322,9 @@ MonoBehaviour:
     CusScale: 0
     CusRot: 0
     rotation: {x: 0, y: 0, z: 0}
-    material: {fileID: 0}
+    material: {fileID: 2100000, guid: e2aff9b67dc907049ad4de81480b47df, type: 2}
     texture: {fileID: 0}
-  - prefab: {fileID: 179340026309834142, guid: 9d1852ab90e684c4cbfeabe4ea929519, type: 3}
+  - prefab: {fileID: 2033493392797372398, guid: b2882a3ee58abc1458cae0585f60164c, type: 3}
     meshRenderer: {fileID: 0}
     position: {x: -285, y: 5, z: -285}
     scale: {x: 1, y: 1, z: 1}
@@ -334,7 +334,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
     material: {fileID: 0}
     texture: {fileID: 0}
-  - prefab: {fileID: 4042348794925195297, guid: 85350b6dc440d69498e7672e570966f1, type: 3}
+  - prefab: {fileID: 4083553203400533041, guid: 0e020a6de0f446f458a51d720496b01d, type: 3}
     meshRenderer: {fileID: 0}
     position: {x: -275, y: 10, z: -275}
     scale: {x: 1, y: 1, z: 1}
@@ -344,7 +344,7 @@ MonoBehaviour:
     rotation: {x: 0, y: 0, z: 0}
     material: {fileID: 0}
     texture: {fileID: 0}
-  - prefab: {fileID: 9142914892164421986, guid: 290bd3440d22ac440ae3af00a064cb9e, type: 3}
+  - prefab: {fileID: 9185064824344880109, guid: bcbcef33bf19c9340822163efa29a084, type: 3}
     meshRenderer: {fileID: 0}
     position: {x: -260, y: 25, z: -260}
     scale: {x: 1, y: 1, z: 1}
