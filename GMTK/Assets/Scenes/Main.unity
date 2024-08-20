@@ -2247,7 +2247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: []
-  money: 0
+  money: 10.5
 --- !u!114 &1216657333
 MonoBehaviour:
   m_ObjectHideFlags: 0
