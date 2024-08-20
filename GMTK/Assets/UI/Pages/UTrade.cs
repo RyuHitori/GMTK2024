@@ -138,7 +138,6 @@ public class UTrade : MonoBehaviour
     {
         foreach (InventoryItem item in inventorySelected)
         {
-            Debug.Log("a");
             if (item.data == data)
             {
                 if(item.count > 0 )
@@ -292,13 +291,15 @@ public class UTrade : MonoBehaviour
             {
                 if (checkingItem.data == item.data)
                 {
-                    if(destination == inventory.inventory)
+                    // Reduce count in the source inventory
+                    if (destination == inventory.inventory)
                     {
-                        foreach(InventoryItem item2 in objectSystem.inventory)
+                        foreach (InventoryItem item2 in objectSystem.inventory)
                         {
-                            if(item2.data == checkingItem.data)
+                            if (item2.data == checkingItem.data)
                             {
                                 item2.count -= item.count;
+                                
                             }
                         }
                     }
@@ -309,6 +310,7 @@ public class UTrade : MonoBehaviour
                             if (item2.data == checkingItem.data)
                             {
                                 item2.count -= item.count;
+                                
                             }
                         }
                     }
@@ -329,6 +331,8 @@ public class UTrade : MonoBehaviour
                     count = item.count
                 };
                 destination.Add(newItem);
+
+                // Reduce count in the source inventory
                 if (destination == inventory.inventory)
                 {
                     foreach (InventoryItem item2 in objectSystem.inventory)
@@ -336,6 +340,8 @@ public class UTrade : MonoBehaviour
                         if (item2.data == newItem.data)
                         {
                             item2.count -= item.count;
+                            if (item2.count <= 0)
+                                objectSystem.inventory.Remove(item2);  // Remove items with count 0
                         }
                     }
                 }
@@ -346,6 +352,8 @@ public class UTrade : MonoBehaviour
                         if (item2.data == newItem.data)
                         {
                             item2.count -= item.count;
+                            if (item2.count <= 0)
+                                inventory.inventory.Remove(item2);  // Remove items with count 0
                         }
                     }
                 }
@@ -353,12 +361,8 @@ public class UTrade : MonoBehaviour
             }
         }
 
-        // Remove items from source inventory that have been transferred
-        foreach (InventoryItem item in itemsToRemove)
-        {
-            source.Remove(item);
-        }
     }
+
 
     public void ExecuteTrade()
     {
@@ -371,8 +375,29 @@ public class UTrade : MonoBehaviour
             TradeItems(systemSelected, inventory.inventory);
         }
         
+        inventorySelected.Clear();
+        systemSelected.Clear();
+
+        try
+        {
+            for (int i = inventory.inventory.Count - 1; i >= 0; i--)
+            {
+                if (inventory.inventory[i].count == 0) inventory.inventory.RemoveAt(inventory.inventory.Count - 1);
+            }
+
+            for (int i = objectSystem.inventory.Count - 1; i >= 0; i--)
+            {
+                if (objectSystem.inventory[i].count == 0) objectSystem.inventory.RemoveAt(objectSystem.inventory.Count - 1);
+            }
+        }
+        catch
+        {
+            // OK BRO
+        }
+        
 
         Refresh();
+        UpdateInfo();
     }
 
 }
