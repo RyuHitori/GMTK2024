@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ObjectData_", menuName = "Object/New Object")]
@@ -18,6 +17,9 @@ public class ObjectData : ScriptableObject
     [Header("Fix")]
     public Vector3 insta3DScale = Vector3.one;
     public Vector3 insta3DOffset = Vector3.zero;
+
+    public Vector3 storageScale = Vector3.one;
+    public Vector3 storageOffset = Vector3.zero;
 
 
 }
