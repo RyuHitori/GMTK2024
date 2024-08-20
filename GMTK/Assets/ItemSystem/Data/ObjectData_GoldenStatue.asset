@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53255d3d1777a454e964f375ef9a164c, type: 3}
-  m_Name: ObjectData_Coin
+  m_Name: ObjectData_GoldenStatue
   m_EditorClassIdentifier: 
-  title: Coin
-  description: A shiny metalic coin
-  value: 1
-  unit: 1
-  icon: {fileID: 0}
-  mesh: {fileID: 0}
+  title: Golden Statue
+  description: A small statue made of gold
+  value: 150
+  scale: 15
+  icon: {fileID: 21300000, guid: 4830dad95012360478b33eaf2cf94d95, type: 3}
+  mesh: {fileID: -2432090755550338912, guid: 29aeb925a1893364e9d0c1a41bcd6f6a, type: 3}

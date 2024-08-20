@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ModelRotator : MonoBehaviour
 {
+    public ObjectData data;
+    public MeshFilter meshFilter;
     public Window window;
 
     public float rotationSpeed = 100f; // Speed of rotation
@@ -10,8 +12,18 @@ public class ModelRotator : MonoBehaviour
 
     public bool rotating;
 
+
+
+    ObjectData currentData;
+
     void Update()
     {
+        if(currentData != data)
+        {
+            currentData = data;
+            meshFilter.mesh = currentData.mesh;
+        }
+
         // Check if window is focused
         if (window != null)
         {

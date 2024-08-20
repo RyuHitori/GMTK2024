@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53255d3d1777a454e964f375ef9a164c, type: 3}
+  m_Name: ObjectData_GoldenCoin
+  m_EditorClassIdentifier: 
+  title: Golden Coin
+  description: A shiny golden coin
+  value: 1
+  scale: 1
+  icon: {fileID: 21300000, guid: bd2c3f779c371744aaff2c247eec020d, type: 3}
+  mesh: {fileID: -2432090755550338912, guid: 104ccbcdbeab4c34081c985fc46fa935, type: 3}

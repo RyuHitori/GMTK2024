@@ -11,14 +11,14 @@ public class ItemSpawner : MonoBehaviour
     {
         public GameObject prefab;
         public MeshRenderer meshRenderer;
-        public Vector3 position;
-        public Vector3 scale = Vector3.one;
-        public bool CusPos = false;
-        public bool CusScale = false;
-        public bool CusRot = false;
-        public Vector3 rotation = Vector3.zero;
         public Material material;
         public Texture texture;
+        public Vector3 position;
+        public bool CusPos = false;
+        public Vector3 scale = Vector3.one;
+        public bool CusScale = false;
+        public Vector3 rotation = Vector3.zero;
+        public bool CusRot = false;
     }
 
     public ItemData[] items;
@@ -133,6 +133,5 @@ public class ItemSpawner : MonoBehaviour
             return topCorner;
         }
     }
-
 
 }

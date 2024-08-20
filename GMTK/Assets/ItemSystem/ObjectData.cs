@@ -6,14 +6,17 @@ using UnityEngine;
 public class ObjectData : ScriptableObject
 {
     [Header("Information")]
-    public string title = "New Object";
+    public string title;
     public string description;
-    public long value;
-    public long scale;
+    public float value;
+    public float scale;
 
     [Header("Graphics")]
     public Sprite icon;
     public Mesh mesh;
 
-    
+    [Header("Fix")]
+    public Vector3 insta3DScale, insta3DOffset;
+
+
 }
