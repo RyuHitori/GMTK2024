@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e047ae5bc9c889498554a281869c943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hour: 6
+  hour: 2
   minute: 40
   second: 0
   timeText: {fileID: 3185545948445239569}
@@ -308,6 +308,9 @@ MonoBehaviour:
   minSize: {x: 222.85, y: 93.8}
   preferedPos: {x: 327.0084, y: -128.8631}
   preferedSize: {x: 222.85, y: 93.8}
+  focusing: 0
+  inactive: {r: 0, g: 0, b: 0, a: 0}
+  active: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1584286599883169543
 GameObject:
   m_ObjectHideFlags: 0
