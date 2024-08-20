@@ -16,5 +16,6 @@ public class StorageItem : MonoBehaviour
     {
         transform.localScale = data.storageScale;
         transform.position = transform.parent.position + data.storageOffset;
+        transform.rotation = data.storageRotation;
     }
 }

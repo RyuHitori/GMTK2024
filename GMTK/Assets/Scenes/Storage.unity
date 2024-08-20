@@ -386,6 +386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   storageItemPF: {fileID: 5245666528341395997, guid: 8f106b25e6ce3cc45a009654ba324d9c, type: 3}
   inventory: {fileID: 0}
+  spawnedItem: []
 --- !u!1 &471560493
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,12 +748,12 @@ MonoBehaviour:
   minFieldOfView: 15
   maxFieldOfView: 60
   moveSpeed: 15
-  minVerticalRotation: -5
+  minVerticalRotation: -80
   maxVerticalRotation: 90
   minHorizontalRotation: 0
   maxHorizontalRotation: 90
   minYPosition: 5
-  maxYPosition: 50
+  maxYPosition: 200
 --- !u!114 &1396257506
 MonoBehaviour:
   m_ObjectHideFlags: 0

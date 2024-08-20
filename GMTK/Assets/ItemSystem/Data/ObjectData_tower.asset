@@ -16,9 +16,10 @@ MonoBehaviour:
   description: tower
   value: 50000000
   scale: 200
-  icon: {fileID: 21300000, guid: 68ef53ce194878e4aacb1048ca1d1257, type: 3}
+  icon: {fileID: 21300000, guid: 04cc8186a8411ab43b10f75aeea3aa8b, type: 3}
   mesh: {fileID: 2608543495314864707, guid: e9016297f255aba4299c24aedef46fff, type: 3}
   insta3DScale: {x: 0.0001, y: 0.0001, z: 0.0001}
   insta3DOffset: {x: 0, y: -1, z: 0}
   storageScale: {x: 1, y: 1, z: 1}
   storageOffset: {x: 0, y: 0, z: 0}
+  storageRotation: {x: 0, y: 0, z: 0, w: 1}
