@@ -16,7 +16,8 @@ public class ObjectData : ScriptableObject
     public Mesh mesh;
 
     [Header("Fix")]
-    public Vector3 insta3DScale, insta3DOffset;
+    public Vector3 insta3DScale = Vector3.one;
+    public Vector3 insta3DOffset = Vector3.zero;
 
 
 }
