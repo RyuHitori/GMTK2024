@@ -240,6 +240,9 @@ MonoBehaviour:
   minSize: {x: 193.56, y: 135.85}
   preferedPos: {x: 336.3888, y: 42.98296}
   preferedSize: {x: 210.6813, y: 135.85}
+  focusing: 0
+  inactive: {r: 0, g: 0, b: 0, a: 0}
+  active: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3435417487810815964
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,8 +1070,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u2022 30.24 \u2022"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 19163bbdde0e6674baa8081f946899e7, type: 2}
-  m_sharedMaterial: {fileID: -2141215879127583823, guid: 19163bbdde0e6674baa8081f946899e7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

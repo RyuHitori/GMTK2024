@@ -10,6 +10,13 @@ public class FPSCameraFollow : MonoBehaviour
     private float rotationY = 0f; // Accumulated rotation offset around the Y axis
     private Quaternion initialRotation; // Initial rotation of the camera
 
+
+    bool zoom;
+
+    float targetZoom;
+    Quaternion targetRot;
+
+
     void Start()
     {
         // Store the initial rotation of the camera
@@ -34,7 +41,26 @@ public class FPSCameraFollow : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(rotationX, rotationY, 0f);
 
         // Apply the rotation relative to the initial rotation
-        transform.localRotation = initialRotation * targetRotation;
+        
+
+        if(zoom)
+        {
+            targetZoom = 55;
+            targetRot = Quaternion.Euler(new Vector3(1,0,0)) * targetRotation;
+        }
+        else
+        {
+            targetZoom = 62;
+            targetRot = initialRotation * targetRotation;
+        }
+
+        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, targetZoom, 20 * Time.deltaTime);
+        transform.localRotation = Quaternion.Lerp(transform.rotation, targetRot, 20f * Time.deltaTime);
+    }
+
+    public void ToggleZoom()
+    {
+        zoom = !zoom;
     }
 }
 

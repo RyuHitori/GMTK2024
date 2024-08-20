@@ -9,7 +9,7 @@ public class ObjectData : ScriptableObject
     public string title = "New Object";
     public string description;
     public long value;
-    public long unit;
+    public long scale;
 
     [Header("Graphics")]
     public Sprite icon;

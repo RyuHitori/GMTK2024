@@ -22,10 +22,13 @@ public class Cursor : MonoBehaviour
     public CursorType cursorType;
     public Vector2 position { get; private set; }
 
+    public Vector2 bound1, bound2;
+
 
     void Start()
     {
         UnityEngine.Cursor.visible = false;
+
     }
 
     void Update()
@@ -41,8 +44,11 @@ public class Cursor : MonoBehaviour
 
         position = cursorPos;
 
-        // Set the cursor image position
-        cursorImage.localPosition = Vector3.Lerp(cursorImage.localPosition, cursorPos, 90 * Time.deltaTime);
+        // Interpolate cursor image position towards the target position
+        Vector2 cursorPosition = Vector3.Lerp(cursorImage.localPosition, cursorPos, 90 * Time.deltaTime);
+
+        // Update the cursor image's local position
+        cursorImage.localPosition = cursorPosition;
 
         switch (cursorType)
         {

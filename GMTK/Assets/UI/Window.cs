@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Window : MonoBehaviour, IPointerDownHandler
 {
@@ -22,6 +23,11 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
     Cursor cursor;
 
+    public Color inactive;
+    public Color active;
+
+    Image background;
+
     public TaskbarButton button { get; private set; }
 
     private void Awake()
@@ -33,6 +39,11 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
     private void Start()
     {
+        inactive = Color.white;
+        active = new Color(91, 0, 255);
+
+        background = transform.Find("Background").GetComponent<Image>();
+
         rectTransform.sizeDelta = preferedSize;
         rectTransform.anchoredPosition = preferedPos;
 
@@ -43,11 +54,18 @@ public class Window : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
+        background.color = focusing ? active : inactive;
 
         focusing = transform.GetSiblingIndex() == transform.parent.childCount - 1;
 
         rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, Vector3.one * targetScale, 30 * Time.deltaTime);
-        Vector2 cursorDelta = cursor.position - cursorAnchor;
+
+        Vector2 clampedCursorPosition = new Vector2(
+                Mathf.Clamp(cursor.position.x, cursor.bound1.x, cursor.bound2.x),
+                Mathf.Clamp(cursor.position.y, cursor.bound1.y, cursor.bound2.y)
+            );
+
+        Vector2 cursorDelta = clampedCursorPosition - cursorAnchor;
 
         if(Input.GetMouseButtonUp(0))
         {

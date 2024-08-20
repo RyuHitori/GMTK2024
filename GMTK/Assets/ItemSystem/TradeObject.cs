@@ -8,7 +8,7 @@ public class TradeObject : MonoBehaviour
     public string title => data.title;
     public string description => data.description;
     public long value => data.value;
-    public long unit => data.unit;
+    public long unit => data.scale;
 
     private void Start()
     {
