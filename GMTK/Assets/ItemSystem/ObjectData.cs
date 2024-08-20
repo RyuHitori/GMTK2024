@@ -21,5 +21,6 @@ public class ObjectData : ScriptableObject
     public Vector3 storageScale = Vector3.one;
     public Vector3 storageOffset = Vector3.zero;
 
+    public Quaternion storageRotation = Quaternion.identity;
 
 }

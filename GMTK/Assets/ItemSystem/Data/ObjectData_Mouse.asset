@@ -16,9 +16,10 @@ MonoBehaviour:
   description: Jerry
   value: 10
   scale: 1
-  icon: {fileID: 21300000, guid: 0a90ddcef38634948a29cdcaaeebfb27, type: 3}
+  icon: {fileID: 21300000, guid: 6b2dad7c94363324abec085500522ea6, type: 3}
   mesh: {fileID: -2432090755550338912, guid: 9e414363921edd54db620e1fa14a9f6f, type: 3}
   insta3DScale: {x: 0.5, y: 0.5, z: 0.5}
   insta3DOffset: {x: 0, y: 0, z: 0}
   storageScale: {x: 1, y: 1, z: 1}
   storageOffset: {x: 0, y: 0, z: 0}
+  storageRotation: {x: 0, y: 0, z: 0, w: 1}
