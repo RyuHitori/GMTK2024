@@ -289,6 +289,8 @@ MonoBehaviour:
   cursorType: 0
   bound1: {x: -573.9, y: -285}
   bound2: {x: 573.9, y: 415.36}
+  audioSource: {fileID: 0}
+  audio2: {fileID: 0}
 --- !u!114 &29803176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2668,8 +2670,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory:
-  - data: {fileID: 11400000, guid: 091a2b4861c199f41bc51011d2b3483e, type: 2}
-    count: 1
+  - data: {fileID: 11400000, guid: 4cbdfd46faf323f4c8d0e6eebeaa3b7c, type: 2}
+    count: 0
   money: 10.5
 --- !u!114 &1216657333
 MonoBehaviour:

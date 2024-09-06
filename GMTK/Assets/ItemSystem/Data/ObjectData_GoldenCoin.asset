@@ -21,5 +21,5 @@ MonoBehaviour:
   insta3DScale: {x: 1, y: 1, z: 1}
   insta3DOffset: {x: 0, y: 0, z: 0}
   storageScale: {x: 1, y: 1, z: 1}
-  storageOffset: {x: -365.3, y: 9.5, z: 359}
+  storageOffset: {x: -365.3, y: 9.5, z: -359}
   storageRotation: {x: 0, y: 0, z: 0, w: 1}
