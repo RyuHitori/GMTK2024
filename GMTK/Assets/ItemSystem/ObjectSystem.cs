@@ -29,15 +29,8 @@ public class ObjectSystem : MonoBehaviour
     {
         foreach (InventoryItem item in inventory)
         {
-            
-            if (item.data == data)
-            {
-                
-                item.count--;
-                return;
-            }
-                
-            
+            if (item.data == data) item.count--;
+            return;
         }
     }
 
@@ -45,12 +38,8 @@ public class ObjectSystem : MonoBehaviour
     {
         foreach (InventoryItem item in inventory)
         {
-            if (item.data == data)
-            {
-                item.count++;
-                return;
-            }
-                
+            if (item.data == data) item.count++;
+            return;
         }
 
         InventoryItem newItem = new InventoryItem();
